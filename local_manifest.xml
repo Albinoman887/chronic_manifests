@@ -14,8 +14,8 @@
     <project path="device/samsung/kltevzw" name="Team-Hydra/android_device_samsung_kltevzw" remote="github" revision="cm-11.0" />
     <project path="hardware/samsung" name="CyanogenMod/android_hardware_samsung" remote="github" revision="cm-11.0" />
     <project path="hardware/qcom/audio-caf/default" name="CyanogenMod/android_hardware_qcom_audio" remote="github" revision="cm-12.0-caf-8974" />
-    <project path="hardware/qcom/display/msm8974" name="CyanogenMod/android_hardware_qcom_display" remote="github" revision="cm-12.0-caf-8974" />
-    <project path="hardware/qcom/media/msm8974" name="CyanogenMod/android_hardware_qcom_media" remote="github" revision="cm-12.0-caf-8974" />
+    <project path="hardware/qcom/display-caf/msm8974" name="CyanogenMod/android_hardware_qcom_display" remote="github" revision="cm-12.0-caf-8974" />
+    <project path="hardware/qcom/media-caf/msm8974" name="CyanogenMod/android_hardware_qcom_media" remote="github" revision="cm-12.0-caf-8974" />
   <!--  <project path="hardware/qcom/display-caf-new" name="CyanogenMod/android_hardware_qcom_display-caf-new" remote="github" revision="cm-11.0" /> -->
   <!--  <project path="hardware/qcom/media-caf-new" name="CyanogenMod/android_hardware_qcom_media-caf-new" remote="github" revision="cm-11.0" /> -->
     <project path="kernel/samsung/klte" name="CyanogenMod/android_kernel_samsung_klte" remote="github" revision="cm-11.0" />
