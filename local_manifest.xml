@@ -1,6 +1,10 @@
 <manifest>
     <!-- add github as a remote source -->
   <!-- <remote name="github" fetch="git://github.com" /> -->
+
+    <!-- Main CM based Forks -->
+    <remove-project path="CyanogenMod/android_frameworks_opt_telephony" />
+    <project path="frameworks/opt/telephony" name="Team-Hydra/android_frameworks_opt_telephony" remote="github" revision="cm-12.0" />
  
     <!-- add my device trees -->
     <project path="device/qcom/common" name="CyanogenMod/android_device_qcom_common" remote="github" revision="cm-12.0" />
