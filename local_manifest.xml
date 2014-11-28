@@ -9,7 +9,7 @@
 <!--    <remove-project name="CyanogenMod/android_frameworks_opt_telephony" /> -->
 <!--    <project path="frameworks/opt/telephony" name="Team-Hydra/android_frameworks_opt_telephony" remote="github" revision="cm-12.0" /> -->
     <!-- project path="vendor/cm" name="Team-Hydra/android_vendor_cm" remote="github" revision="cm-12.0" / -->
-    <project path="packages/apps/Settings" name="Team-Hydra/android_packages_apps_Settings" remote="github" revision="cm-12.0" />
+    <project path="packages/apps/InCallUI" name="Team-Hydra/android_packages_apps_InCallUI" remote="github" revision="cm-12.0" />
     <!-- project path="build" name="Team-Hydra/android_build" remote="github" revision="cm-12.0" /-->
  
     <!-- add my device trees -->
