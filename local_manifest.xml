@@ -4,11 +4,11 @@
 
     <!-- Main CM based Forks -->
 
-    <remove-project name="CyanogenMod/android_frameworks_base" />
-    <project path="frameworks/base" name="Team-Hydra/android_frameworks_base" remote="github" revision="cm-12.0" />
+   <!-- <remove-project name="CyanogenMod/android_frameworks_base" /> -->
+  <!--  <project path="frameworks/base" name="Team-Hydra/android_frameworks_base" remote="github" revision="cm-12.0" /> -->
 
-    <remove-project name="CyanogenMod/android_packages_apps_Settings" />
-    <project path="packages/apps/Settings" name="Team-Hydra/android_packages_apps_Settings" remote="github" revision="cm-12.0" />
+   <!-- <remove-project name="CyanogenMod/android_packages_apps_Settings" />
+    <project path="packages/apps/Settings" name="Team-Hydra/android_packages_apps_Settings" remote="github" revision="cm-12.0" /> -->
 
     <remove-project name="CyanogenMod/android_packages_services_Telephony" /> -->
     <project path="packages/services/Telephony" name="Team-Hydra/android_packages_services_Telephony" remote="github" revision="cm-12.0" />
