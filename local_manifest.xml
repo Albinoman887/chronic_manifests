@@ -12,8 +12,8 @@
  
     <!-- add my device trees -->
     <project path="device/qcom/common" name="CyanogenMod/android_device_qcom_common" remote="github" revision="cm-12.0" />
-    <project path="device/samsung/qcom-common" name="CyanogenMod/android_device_samsung_qcom-common" remote="github" revision="cm-12.0" />
-    <project path="device/samsung/msm8974-common" name="Team-Hydra/android_device_samsung_msm8974-common" remote="github" revision="cm-12.0" />
+    <project path="device/samsung/qcom-common" name="Team-Hydra/android_device_samsung_qcom-common" remote="github" revision="cm-12.0" />
+    <project path="device/samsung/msm8974-common" name="CyanogenMod/android_device_samsung_msm8974-common" remote="github" revision="cm-12.0" />
     <project path="device/samsung/klte-common" name="Team-Hydra/android_device_samsung_klte-common" remote="github" revision="cm-12.0" />
     <project path="device/samsung/jf-common" name="CyanogenMod/android_device_samsung_jf-common" remote="github" revision="cm-12.0" />
     <project path="device/samsung/jflteusc" name="Team-Hydra/android_device_samsung_jflteusc" remote="github" revision="cm-12.0" />
