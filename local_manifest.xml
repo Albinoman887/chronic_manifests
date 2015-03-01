@@ -23,7 +23,7 @@
     <project path="device/samsung/kltespr" name="Team-Hydra/android_device_samsung_kltespr" remote="github" revision="cm-12.0" />
     <project path="device/samsung/kltevzw" name="Team-Hydra/android_device_samsung_kltevzw" remote="github" revision="cm-12.0" />
     <project path="hardware/samsung" name="CyanogenMod/android_hardware_samsung" remote="github" revision="cm-12.0" />
-    <project path="kernel/samsung/klte" name="Team-Hydra/android_kernel_samsung_klte" remote="github" revision="cm-12.0" />
+    <project path="kernel/samsung/klte" name="CyanogenMod/android_kernel_samsung_klte" remote="github" revision="cm-12.0" />
     <project path="kernel/samsung/jf" name="CyanogenMod/android_kernel_samsung_jf" remote="github" revision="cm-12.0" />
     <project path="vendor/samsung" name="Team-Hydra/android_vendor_samsung" remote="github" revision="cm-12.0" />
 </manifest>
