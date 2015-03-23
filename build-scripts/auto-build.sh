@@ -1,11 +1,11 @@
 #!/bin/bash
 
 #Config options
-export SRC_ROOT=/home/albinoman887/cm-12
+export PACKAGE_NAME=cm-12.1
+export SRC_ROOT=/home/albinoman887/$PACKAGE_NAME
 export TMP_UPLOAD=/home/albinoman887/upload
 export REMOTE_URL=www.chronic-buildbox.com
-export MIRROR_URL=mirror.chronic-buildbox.com
-export MEGA_ROOT=/Root/html
+export HOME_URL=filetto-server.duckdns.org
 export WEB_ROOT=/var/www/html
 
 #######################################################################################
@@ -28,25 +28,27 @@ mka bacon
 function SetupDownloads()
 {
 cd $SRC_ROOT/out/target/product/$DEVICE/
-cp -r cm-12*.zip $TMP_UPLOAD/
+cp -r $PACKAGE_NAME*.zip $TMP_UPLOAD/
 cd $TMP_UPLOAD
-cp -r cm-12*.zip $WEB_ROOT/$DEVICE/$BUILD_TYPE/
+
+#Copy to home
+if [ "$BUILD_TYPE" = "dev" ]; then
+  if [ "$DEVICE" = "shamu" ]; then
+echo
+echo "Device set to $DEVICE and BUILD TYPE set to $BUILD_TYPE"
+echo "Copying to home server..."
+echo
+
+scp -p $PACKAGE_NAME*.zip $HOME_URL:$TMP_UPLOAD/
+ssh -t $HOME_URL "cd $TMP_UPLOAD ; cp -r $PACKAGE_NAME*.zip $WEB_ROOT/$DEVICE/$BUILD_TYPE/ ; rm -r $PACKAGE_NAME*.zip"
+  fi
+fi
 
 #Cop to main
-#scp -p cm-12*.zip $REMOTE_URL:$TMP_UPLOAD/
-#ssh -t $REMOTE_URL "cd $TMP_UPLOAD ; cp -r cm-12*.zip $WEB_ROOT/$DEVICE/$BUILD_TYPE/ ; rm -r cm-12*.zip"
+scp -p $PACKAGE_NAME*.zip $REMOTE_URL:$TMP_UPLOAD/
+ssh -t $REMOTE_URL "cd $TMP_UPLOAD ; cp -r $PACKAGE_NAME*.zip $WEB_ROOT/$DEVICE/$BUILD_TYPE/ ; rm -r $PACKAGE_NAME*.zip"
 
-#Copy to mirror
-#scp -p cm-12*.zip $MIRROR_URL:$TMP_UPLOAD/
-#ssh -t $MIRROR_URL "cd $TMP_UPLOAD ; cp -r cm-12*.zip $WEB_ROOT/$DEVICE/$BUILD_TYPE/ ; rm -r cm-12*.zip"
-
-#rsync
-rsync -azP --delete $WEB_ROOT/$DEVICE/$BUILD_TYPE/ $REMOTE_URL:$WEB_ROOT/$DEVICE/$BUILD_TYPE
-rsync -azP --delete $WEB_ROOT/$DEVICE/$BUILD_TYPE/ $MIRROR_URL:$WEB_ROOT/$DEVICE/$BUILD_TYPE
-#if [ "$BUILD_TYPE" != "dev" ]; then
-#megasync -l $WEB_ROOT/$DEVICE/$BUILD_TYPE -r $MEGA_ROOT/$DEVICE/$BUILD_TYPE
-#fi
-rm -r cm-12*.zip
+rm -r $PACKAGE_NAME*.zip
 cd $SRC_ROOT
 }
 
@@ -75,6 +77,14 @@ echo
 echo "Set DEVICE to: $DEVICE"
 echo "Set BUILD TYPE to: $BUILD_TYPE"
 echo
+
+if [ "$BUILD_TYPE" = "dev" ]; then
+  if [ "$DEVICE" = "shamu" ]; then
+echo
+echo "Device is $DEVICE and build type is $BUILD_TYPE, will be copied to home server"
+echo
+  fi
+fi
 
 #Get time
 time_start=$(date +%s.%N)
