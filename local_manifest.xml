@@ -15,15 +15,15 @@
     <project path="device/moto/shamu" name="Team-Hydra/android_device_moto_shamu" remote="github" revision="cm-12.1" />
     <project path="kernel/moto/shamu" name="CyanogenMod/android_kernel_moto_shamu" remote="github" revision="cm-12.1" />
     <project path="device/samsung/qcom-common" name="Team-Hydra/android_device_samsung_qcom-common" remote="github" revision="cm-12.1" />
-    <project path="device/samsung/msm8974-common" name="Team-Hydra/android_device_samsung_msm8974-common" remote="github" revision="cm-12.1" />
-    <project path="device/samsung/klte-common" name="Team-Hydra/android_device_samsung_klte-common" remote="github" revision="cm-12.1" />
+    <project path="device/samsung/msm8974-common" name="CyanogenMod/android_device_samsung_msm8974-common" remote="github" revision="cm-12.1" />
+    <project path="device/samsung/klte-common" name="CyanogenMod/android_device_samsung_klte-common" remote="github" revision="cm-12.1" />
     <project path="device/samsung/klte" name="Team-Hydra/android_device_samsung_klte" remote="github" revision="cm-12.1" />
     <project path="device/samsung/klteusc" name="Team-Hydra/android_device_samsung_klteusc" remote="github" revision="cm-12.1" />
     <project path="device/samsung/kltespr" name="Team-Hydra/android_device_samsung_kltespr" remote="github" revision="cm-12.1" />
     <project path="device/samsung/kltedv" name="Team-Hydra/android_device_samsung_kltedv" remote="github" revision="cm-12.1" />
     <project path="hardware/samsung" name="CyanogenMod/android_hardware_samsung" remote="github" revision="cm-12.1" />
-    <project path="kernel/samsung/klte" name="Team-Hydra/android_kernel_samsung_klte" remote="github" revision="cm-12.1" />
+    <project path="kernel/samsung/klte" name="CyanogenMod/android_kernel_samsung_klte" remote="github" revision="cm-12.1" />
     <project path="vendor/motorola" name="TheMuppets/proprietary_vendor_motorola" remote="github" revision="cm-12.1" />
-    <project path="vendor/samsung" name="Team-Hydra/android_vendor_samsung" remote="github" revision="cm-12.1" />
+    <project path="vendor/samsung" name="TheMuppets/proprietary_vendor_samsung" remote="github" revision="cm-12.1" />
 
 </manifest>
