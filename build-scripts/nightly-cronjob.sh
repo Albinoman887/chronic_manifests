@@ -2,13 +2,17 @@
 
 #Config options
 export BUILD_TYPE=nightly
-export SRC_ROOT=/home/albinoman887/cm-11
+export PACKAGE_NAME=cm-13
+export SRC_ROOT=/home/albinoman887/android/$PACKAGE_NAME
+export TMP_UPLOAD=/home/albinoman887/upload
+export REMOTE_URL=albinoman887@23.94.12.54
+export HOME_URL=albinoman887@filetto-server.duckdns.org
 export WEB_ROOT=/var/www/html
-export MIRROR_ROOT=albinoman@www.chronic-buildbox.com:/var/www/html
-export MEGA_ROOT=/Root/html
 
 #######################################################################################
 
+export DEVICE="$1"
+export BUILD_TYPE="$2"
 export CURDATE=`date "+%m.%d.%Y"`
 export PATH=~/bin:$PATH
 export USE_CCACHE=1
@@ -24,51 +28,44 @@ mka bacon
 function SetupDownloads()
 {
 cd $SRC_ROOT/out/target/product/$DEVICE/
-cp -r cm-11*.zip $WEB_ROOT/$DEVICE/$BUILD_TYPE/
-scp -p cm-11*.zip $MIRROR_ROOT/$DEVICE/$BUILD_TYPE/
-megasync --reload -l $WEB_ROOT/$DEVICE/$BUILD_TYPE -r $MEGA_ROOT/$DEVICE/$BUILD_TYPE
+cp -r $PACKAGE_NAME*.zip $TMP_UPLOAD/
+cd $TMP_UPLOAD
+
+#Cop to main
+scp -p $PACKAGE_NAME*.zip $REMOTE_URL:$TMP_UPLOAD/
+ssh -t $REMOTE_URL "cd $TMP_UPLOAD ; cp -r $PACKAGE_NAME*.zip $WEB_ROOT/$DEVICE/$BUILD_TYPE/ ; rm -r $PACKAGE_NAME*.zip"
+
+rm -r $PACKAGE_NAME*.zip
+cd $SRC_ROOT
 }
 
 #######################################################################################
 
-#cleanup and sync
-cd $SRC_ROOT
-make clobber
-repo sync
 
 #Get time
 time_start=$(date +%s.%N)
 
-#klte
-#DEVICE=klte
-#DoBuild
-#SetupDownloads
 
-#kltedv
-DEVICE=kltedv
+#Build
+DEVICE=kltespr
 DoBuild
 SetupDownloads
 
-#kltespr
-#DEVICE=kltespr
-#DoBuild
-#SetupDownloads
+DEVICE=klteusc
+DoBuild
+SetupDownloads
 
-#klteusc
-#DEVICE=klteusc
-#DoBuild
-#SetupDownloads
-
-#kltevzw
-#DEVICE=kltevzw
-#DoBuild
-#SetupDownloads
-
+DEVICE=kltedv
+DoBuild
+SetupDownloads
 
 #cleanup
 cd $SRC_ROOT
 make clobber
 
-#echo total build time
+
+#Print total build time
 time_end=$(date +%s.%N)
 echo -e "${BLDYLW}Total time elapsed: ${TCTCLR}${TXTGRN}$(echo "($time_end - $time_start) / 60"|bc ) ${TXTYLW}minutes${TXTGRN} ($(echo "$time_end - $time_start"|bc ) ${TXTYLW}seconds) ${TXTCLR}"
+
+
