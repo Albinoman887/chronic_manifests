@@ -20,6 +20,8 @@ export USE_CCACHE=1
 function DoBuild()
 {
 cd $SRC_ROOT
+repo forall -c 'git reset --hard'
+repo sync --force-sync
 . build/envsetup.sh
 lunch cm_$DEVICE-userdebug
 mka bacon
