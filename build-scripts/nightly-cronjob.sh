@@ -20,8 +20,6 @@ export USE_CCACHE=1
 function DoBuild()
 {
 cd $SRC_ROOT
-repo forall -c 'git reset --hard'
-repo sync --force-sync
 . build/envsetup.sh
 lunch cm_$DEVICE-userdebug
 mka bacon
@@ -32,7 +30,7 @@ function SetupDownloads()
 cd $SRC_ROOT/out/target/product/$DEVICE/
 cp -r $PACKAGE_NAME*.zip $TMP_UPLOAD/
 cd $TMP_UPLOAD
-
+\
 #Cop to main
 scp -p $PACKAGE_NAME*.zip $REMOTE_URL:$TMP_UPLOAD/
 ssh -t $REMOTE_URL "cd $TMP_UPLOAD ; cp -r $PACKAGE_NAME*.zip $WEB_ROOT/$DEVICE/$BUILD_TYPE/ ; rm -r $PACKAGE_NAME*.zip"
@@ -43,6 +41,9 @@ cd $SRC_ROOT
 
 #######################################################################################
 
+export PATH=~/bin:$PATH
+repo forall -c 'git reset --hard'
+repo sync --force-sync
 
 #Get time
 time_start=$(date +%s.%N)
