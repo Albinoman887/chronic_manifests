@@ -1,7 +1,6 @@
 #!/bin/bash
 
 #Config options
-export BUILD_TYPE=nightly
 export PACKAGE_NAME=cm-13
 export SRC_ROOT=/home/albinoman887/android/$PACKAGE_NAME
 export TMP_UPLOAD=/home/albinoman887/upload
@@ -16,12 +15,15 @@ export BUILD_TYPE="$2"
 export CURDATE=`date "+%m.%d.%Y"`
 export PATH=~/bin:$PATH
 export USE_CCACHE=1
+export CCACHE_DIR="/home/albinoman887/.ccache"
+export ANDROID_CCACHE_DIR="/home/albinoman887/.ccache"
 
 function DoBuild()
 {
 cd $SRC_ROOT
 . build/envsetup.sh
 lunch cm_$DEVICE-userdebug
+echo "Device set to $DEVICE and BUILD TYPE set to $BUILD_TYPE"
 mka bacon
 }
 
@@ -41,7 +43,7 @@ cd $SRC_ROOT
 
 #######################################################################################
 
-export PATH=~/bin:$PATH
+#Sync
 repo forall -c 'git reset --hard'
 repo sync --force-sync
 
@@ -50,6 +52,12 @@ time_start=$(date +%s.%N)
 
 
 #Build
+BUILD_TYPE=nightly
+
+DEVICE=klte
+DoBuild
+SetupDownloads
+
 DEVICE=kltespr
 DoBuild
 SetupDownloads
